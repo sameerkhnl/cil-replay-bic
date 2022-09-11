@@ -16,5 +16,6 @@ joint-training/
 **/*.npy
 **/*.npz
 .vscode/
+**/*.sh
 
 

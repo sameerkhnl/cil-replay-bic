@@ -212,7 +212,6 @@ def get_args(argv):
     args.repeat = _args.repeat
     args.memory_type = _args.memory_type
     # args.ordering = _args.ordering
-    args.incorrect_ratio = _args.incorrect_ratio
     args.save_memory = _args.save_memory
     args.initial_increment = _args.initial_increment
     args.increment = _args.increment

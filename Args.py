@@ -1,18 +1,10 @@
 from pathlib import Path
 from typing import List
-from xmlrpc.client import boolean
-import numpy
 import torch
-import continuum
-from torch.optim.lr_scheduler import ReduceLROnPlateau
-from torch.utils.data import DataLoader
-from continuum.metrics.logger import Logger
 from continuum.scenarios.class_incremental import ClassIncremental
 import time
 
 from CurrentTask import CurrentTask
-
-from stats_bias import StatsBias
 from continuum.rehearsal.memory import RehearsalMemory
 
 class Args:
@@ -82,8 +74,6 @@ class Args:
     class_order:List[int] = None
 
     correct_bias:bool = None
-
-    stats_bias:StatsBias = None
 
     eval_on_task_zero:bool = None
 
