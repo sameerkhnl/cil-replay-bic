@@ -1,5 +1,5 @@
 # Class Incremental Learning Using Enhanced Replay and Bias Correction Using Auxiliary Network
-In this work, we propose a novel exemplar selection algorithm called **CORE-high** that is effective when dataset consists of noisy images. This method outperforms plain random selection when the images contain random pixel noise. We also propose a bias correction technique that makes use of an auxiliary network which mitigates the biases against old classes. 
+In this work, we propose a novel exemplar selection algorithm called **CORE-high** that is effective when dataset consists of noisy images. This method outperforms plain random selection when the images contain random pixel noise. We also propose a bias correction technique that makes use of an auxiliary network **BiC-AN** which mitigates the biases against old classes. 
 
 ### Installation & Requirements
 
@@ -24,7 +24,7 @@ The ```replay.sh``` can be used to run replay experiments. The variables ```perm
 The ```bic.sh``` can be used to run the bias correction experiments.
 
 ### Running Custom Experiments
-The ```get_args(..)``` method in utils.py shows all available command line arguments. Some of the main arguments are:
+Individual experiments can be run using ```main.py```. The ```get_args(..)``` method in ```utils.py``` shows all available command line arguments. Some of the main arguments are:
 - ```--dataset``` (CIFAR100 (default) | TinyImageNet200)
 - ```--repeat```: number of repeats
 - ```--initial_increment```: number of base classes
