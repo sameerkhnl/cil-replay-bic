@@ -3,24 +3,19 @@ import time
 import datetime
 from pathlib import Path
 import csv
-from typing import List
 import torch
 import argparse
 from continuum.scenarios.class_incremental import ClassIncremental
 from Args import Args
 from replay.cl_margin import CL_MARGIN_CLASS_AVG, CL_MARGIN_H80_L20, CL_MARGIN_HIGH, CL_MARGIN_LOW, CL_MARGIN_HIGH_ALL, CL_MARGIN_LOW_ALL
 import numpy as np
-from continuum.generators.scenarios_generator import TaskOrderGenerator
 import copy
 import pandas as pd
-import sys
 from continuum.tasks.base import BaseTaskSet, TaskType
 from continuum.tasks import TaskSet
 import torchvision.transforms as transforms
 import random
 import os
-import math
-
 
 def get_hms(seconds):
     ty_res = time.gmtime(seconds)
@@ -148,7 +143,7 @@ def get_current_lr_from_optimizer(optimizer:torch.optim.Optimizer):
 #The main function that processes that appends metrics into the csv file. 
 def process_overall_acc(args:Args, overall_acc_list, agent):
     def _append_metrics_to_file(filepath, overall_acc_list, agent_name, seed, perm):
-        agent_name_transform = {'cl_margin_high': 'CORE-high', 'cl_margin_low': 'CORE-low','herding_icarl':'Herding', 'baseline': 'Baseline', 'random':'Random', 'cl_margin_class_avg': 'CORE-avg'}
+        agent_name_transform = {'core_high': 'CORE-high', 'core_low': 'CORE-low','herding':'herding', 'baseline': 'baseline', 'random':'random', 'core_class_avg': 'CORE-avg'}
         an = agent_name
         if agent_name in agent_name_transform.keys():
             an = agent_name_transform[agent_name]
@@ -201,7 +196,7 @@ def get_args(argv):
     parser.add_argument('--noise_var', type=float, default=0.5, help='noise variance')
     parser.add_argument('--memory_per_class', type=int, default=20, help='')
     parser.add_argument('--perm', type=int, default=0, help='seed for generating class permutation')
-    parser.add_argument('--start_seed', type=int, default=0, help='starting seed. Helpful if running experiments on parallel on different machines. Experiment is performed start_seed+repeat times')
+    parser.add_argument('--start_seed', type=int, default=0, help='starting seed. Helpful if running experiments on parallel on different machines. Experiment is performed start_seed+repeat times.')
 
     _args = parser.parse_args(argv)
 
@@ -402,12 +397,12 @@ def old_classes_by_task(args, tid):
     old_classes = np.sort(list(seen_classes - new_classes))
     return old_classes
 
-dict_herding = {'herding_icarl': 'barycenter', 'random': 'random', 'cluster': 'cluster',\
-                'cl_margin_high': CL_MARGIN_HIGH(), 'cl_margin_low': CL_MARGIN_LOW(), \
-                'cl_margin_h80_l20': CL_MARGIN_H80_L20(),
-                'cl_margin_low_all': CL_MARGIN_LOW_ALL(), \
-                'cl_margin_high_all': CL_MARGIN_HIGH_ALL(), 
-                'cl_margin_class_avg': CL_MARGIN_CLASS_AVG(), 
+dict_herding = {'herding': 'barycenter', 'random': 'random', 'cluster': 'cluster',\
+                'core_high': CL_MARGIN_HIGH(), 'core_low': CL_MARGIN_LOW(), \
+                'core_h80_l20': CL_MARGIN_H80_L20(),
+                'core_low_all': CL_MARGIN_LOW_ALL(), \
+                'core_high_all': CL_MARGIN_HIGH_ALL(), 
+                'core_class_avg': CL_MARGIN_CLASS_AVG(), 
                 } 
 
 

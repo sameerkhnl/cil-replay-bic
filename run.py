@@ -167,7 +167,7 @@ def _add_exemplars(args:Args, tid:int):
             args.current_task.logger_subset = 'train'
             logits, features, _ = eval(args, args.current_task.train_loader_eval)
 
-            if args.agent in ['herding_icarl', 'cluster']:
+            if args.agent in ['herding']:
                 args.mem.add(x,y,t,features)
 
             else:

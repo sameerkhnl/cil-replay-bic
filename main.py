@@ -87,11 +87,11 @@ def setup_model(args:Args):
     return net
                     
 if __name__ == '__main__':
-    ALL_AGENTS = ['cl_margin_high', 'random', 'herding_icarl', 'cl_margin_low', 'cl_margin_high_all', 'cl_margin_class_avg', 'load_from_file']
-    AGENTS = ['cl_margin_high', 'random', 'herding_icarl']
+    ALL_AGENTS = ['core_high', 'random', 'herding', 'core_low', 'core_high_all', 'load_from_file']
+    AGENTS = ['core_high', 'random', 'herding']
     # AGENTS = ['random']
     # AGENTS = ['load_from_file']
-    # AGENTS = ['random', 'cl_margin_high', 'herding_icarl', 'cl_margin_low']
+    # AGENTS = ['random', 'core_high', 'herding_icarl', 'core_low']
 
     config = {'CIFAR100':configs.config_cifar100, 'TinyImageNet200': configs.config_tinyimagenet200}
 

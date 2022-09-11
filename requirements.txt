@@ -1,0 +1,9 @@
+torch
+torchvision
+continuum
+numpy
+pandas
+matplotlib
+ratio-merge
+scikit-image
+pathlib

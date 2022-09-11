@@ -1,4 +1,3 @@
-from matplotlib import markers
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
