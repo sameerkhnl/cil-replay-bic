@@ -1,0 +1,1 @@
+from configs import config_cifar10, config_cifar100, config_imagenet1000, config_mnist, config_tinyimagenet200, config_imagenet100
