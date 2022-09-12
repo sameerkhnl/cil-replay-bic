@@ -18,7 +18,7 @@ We make use of the <a href='https://github.com/Continvvm/continuum' target="_bla
 For each experiment, the models are saved after every epoch using a filename inside the folder ```store```. The saved models are automatically loaded from the previous checkpoint if the experiment is paused and resumed at a later time.
 
 ### Running Replay Experiments:
-The ```replay.sh``` can be used to run replay experiments. The variables ```permstart```, ```permend``` can be modified to set the seed that generates class orders. The variable ```startseed``` and ```repeat``` can be used to set the start seed and the number or runs for each class order. By default the three methods that are compared are: ```CORE-high, random and herdingl``` The AGENTS variable in ```main.py``` can be used to specify the replay methods to compare. 
+The ```replay.sh``` can be used to run replay experiments. The variables ```permstart```, ```permend``` can be modified to set the seed that generates class orders. The variables ```startseed``` and ```repeat``` can be used to set the start seed and the number or runs for each class order. By default the three methods that are compared are: ```CORE-high, random and herding``` The AGENTS variable in ```main.py``` can be used to specify the replay methods to compare. 
 
 ### Running Bias Correction Experiments
 The ```bic.sh``` can be used to run the bias correction experiments.
